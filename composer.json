@@ -1,0 +1,34 @@
+{
+  "name": "teknomavi/common",
+  "type": "library",
+  "description": "Genel Yardımcı PHP Kütüphaneleri",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "keywords": [
+    "tr2en",
+    "trtoen",
+    "string",
+    "türkçe",
+    "turkish"
+  ],
+  "homepage": "https://github.com/teknomavi/common",
+  "authors": [
+    {
+      "name": "Teknomavi",
+      "email": "info@teknomavi.com",
+      "homepage": "http://www.teknomavi.com"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/teknomavi/common/issues"
+  },
+  "require": {
+    "php": "> 5.0.0"
+  },
+  "autoload": {
+    "psr-4": {"Teknomavi\\Common\\": "src/"}
+  },
+  "autoload-dev": {
+    "psr-4": {"Teknomavi\\Common\\": "tests/"}
+  }
+}
