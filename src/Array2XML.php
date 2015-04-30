@@ -34,12 +34,13 @@ namespace Teknomavi\Common;
 use \DomDocument;
 use \Exception;
 
-class Array2XML {
+class Array2XML
+{
 
     /**
      * @var DomDocument
      */
-    private $xml = NULL;
+    private $xml = null;
     /**
      * @var string
      */
@@ -52,7 +53,8 @@ class Array2XML {
      * @param string $encoding
      * @param bool   $format_output
      */
-    public function init( $version = '1.0', $encoding = 'UTF-8', $format_output = TRUE ) {
+    public function init( $version = '1.0', $encoding = 'UTF-8', $format_output = true )
+    {
         $this->xml = new DomDocument( $version, $encoding );
         $this->xml->formatOutput = $format_output;
         $this->encoding = $encoding;
@@ -66,10 +68,11 @@ class Array2XML {
      *
      * @return DomDocument
      */
-    public function &createXML( $node_name, $data = array() ) {
+    public function &createXML( $node_name, $data = array() )
+    {
         $xml = $this->getXMLRoot();
         $xml->appendChild( $this->convert( $node_name, $data ) );
-        $this->xml = NULL;    // clear the xml node in the class for 2nd time use.
+        $this->xml = null;    // clear the xml node in the class for 2nd time use.
         return $xml;
     }
 
@@ -82,14 +85,15 @@ class Array2XML {
      * @throws \Exception
      * @return \DOMNode
      */
-    private function &convert( $node_name, $arr = array() ) {
+    private function &convert( $node_name, $arr = array() )
+    {
         $xml = $this->getXMLRoot();
         $node = $xml->createElement( $node_name );
-        if ( is_array( $arr ) ) {
+        if (is_array( $arr )) {
             // get the attributes first.;
-            if ( isset( $arr['@attributes'] ) ) {
-                foreach ( $arr['@attributes'] as $key => $value ) {
-                    if ( !$this->isValidTagName( $key ) ) {
+            if (isset( $arr['@attributes'] )) {
+                foreach ($arr['@attributes'] as $key => $value) {
+                    if (!$this->isValidTagName( $key )) {
                         throw new Exception( '[Array2XML] Illegal character in attribute name. attribute: ' . $key . ' in node: ' . $node_name );
                     }
                     $node->setAttribute( $key, $this->boolString( $value ) );
@@ -97,28 +101,30 @@ class Array2XML {
                 unset( $arr['@attributes'] );
             }
             // check if it has a value stored in @value, if yes store the value and return else check if its directly stored as string
-            if ( isset( $arr['@value'] ) ) {
+            if (isset( $arr['@value'] )) {
                 $node->appendChild( $xml->createTextNode( $this->boolString( $arr['@value'] ) ) );
                 unset( $arr['@value'] );
+
                 return $node;
-            } else if ( isset( $arr['@cdata'] ) ) {
+            } else if (isset( $arr['@cdata'] )) {
                 $node->appendChild( $xml->createCDATASection( $this->boolString( $arr['@cdata'] ) ) );
                 unset( $arr['@cdata'] );
+
                 return $node;
             }
         }
         //create subnodes using recursion
-        if ( is_array( $arr ) ) {
+        if (is_array( $arr )) {
             // recurse to get the node for that key
-            foreach ( $arr as $key => $value ) {
-                if ( !$this->isValidTagName( $key ) ) {
+            foreach ($arr as $key => $value) {
+                if (!$this->isValidTagName( $key )) {
                     throw new Exception( '[Array2XML] Illegal character in tag name. tag: ' . $key . ' in node: ' . $node_name );
                 }
-                if ( is_array( $value ) && is_numeric( key( $value ) ) ) {
+                if (is_array( $value ) && is_numeric( key( $value ) )) {
                     // MORE THAN ONE NODE OF ITS KIND
                     // if the new array is numeric index, means it is array of nodes of the same kind
                     // it should follow the parent key name
-                    foreach ( $value as $k => $v ) {
+                    foreach ($value as $k => $v) {
                         $node->appendChild( $this->convert( $key, $v ) );
                     }
                 } else {
@@ -130,9 +136,10 @@ class Array2XML {
         }
         // after we are done with all the keys in the array (if it is one)
         // we check if it has any text value, if yes, append it.
-        if ( !is_array( $arr ) && $arr !== "" ) {
+        if (!is_array( $arr ) && $arr !== "") {
             $node->appendChild( $xml->createTextNode( $this->boolString( $arr ) ) );
         }
+
         return $node;
     }
 
@@ -141,10 +148,12 @@ class Array2XML {
      *
      * @return DomDocument
      */
-    private function getXMLRoot() {
-        if ( empty( $this->xml ) ) {
+    private function getXMLRoot()
+    {
+        if (empty( $this->xml )) {
             $this->init();
         }
+
         return $this->xml;
     }
 
@@ -155,13 +164,15 @@ class Array2XML {
      *
      * @return string
      */
-    private function boolString( $v ) {
-        if ( $v === TRUE ) {
+    private function boolString( $v )
+    {
+        if ($v === true) {
             return "true";
         }
-        if ( $v === FALSE ) {
+        if ($v === false) {
             return "false";
         }
+
         return $v;
     }
 
@@ -173,8 +184,10 @@ class Array2XML {
      *
      * @return bool
      */
-    private function isValidTagName( $tag ) {
+    private function isValidTagName( $tag )
+    {
         $pattern = '/^[a-z_]+[a-z0-9\:\-\.\_]*[^:]*$/i';
+
         return preg_match( $pattern, $tag, $matches ) && $matches[0] == $tag;
     }
 }

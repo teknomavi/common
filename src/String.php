@@ -6,11 +6,8 @@ class String
 {
 
     public static $lowerTR = array( "ç", "ğ", "i", "ı", "ö", "ş", "ü" );
-
     public static $upperTR = array( "Ç", "Ğ", "İ", "I", "Ö", "Ş", "Ü" );
-
     public static $lowerEN = array( "c", "g", "i", "i", "o", "s", "u" );
-
     public static $upperEN = array( "C", "G", "I", "I", "O", "S", "U" );
 
     /**
@@ -20,10 +17,11 @@ class String
      *
      * @return string
      */
-    public static function strtoupper($string)
+    public static function strtoupper( $string )
     {
-        $string = str_replace(self::$lowerTR, self::$upperTR, $string);
-        return mb_strtoupper($string);
+        $string = str_replace( self::$lowerTR, self::$upperTR, $string );
+
+        return mb_strtoupper( $string );
     }
 
     /**
@@ -33,10 +31,11 @@ class String
      *
      * @return string
      */
-    public static function strtolower($string)
+    public static function strtolower( $string )
     {
-        $string = str_replace(self::$upperTR, self::$lowerTR, $string);
-        return mb_strtolower($string,'UTF-8.tr');
+        $string = str_replace( self::$upperTR, self::$lowerTR, $string );
+
+        return mb_strtolower( $string, 'UTF-8.tr' );
     }
 
     /**
@@ -46,9 +45,9 @@ class String
      *
      * @return string
      */
-    public static function ucfirst($string)
+    public static function ucfirst( $string )
     {
-        return self::strtoupper(mb_substr($string, 0, 1)) . self::strtolower(mb_substr($string, 1));
+        return self::strtoupper( mb_substr( $string, 0, 1 ) ) . self::strtolower( mb_substr( $string, 1 ) );
     }
 
     /**
@@ -58,11 +57,12 @@ class String
      *
      * @return string
      */
-    public static function ucwords($string)
+    public static function ucwords( $string )
     {
-        $words = explode(" ", $string);
-        $words = array_map("self::ucfirst", $words);
-        return implode(" ", $words);
+        $words = explode( " ", $string );
+        $words = array_map( "self::ucfirst", $words );
+
+        return implode( " ", $words );
     }
 
     /**
@@ -72,12 +72,12 @@ class String
      *
      * @return string
      */
-    public static function uctitle($string)
+    public static function uctitle( $string )
     {
+        $words = explode( " ", self::strtolower( $string ) );
+        $words = array_map( "self::ucfirst", $words );
 
-        $words = explode(" ", self::strtolower($string));
-        $words = array_map("self::ucfirst", $words);
-        return implode(" ", $words);
+        return implode( " ", $words );
     }
 
     /**
@@ -87,10 +87,11 @@ class String
      *
      * @return string
      */
-    public static function TRtoEN($string)
+    public static function TRtoEN( $string )
     {
-        $string = str_replace(self::$lowerTR, self::$lowerEN, $string);
-        $string = str_replace(self::$upperTR, self::$upperEN, $string);
+        $string = str_replace( self::$lowerTR, self::$lowerEN, $string );
+        $string = str_replace( self::$upperTR, self::$upperEN, $string );
+
         return $string;
     }
 
@@ -102,10 +103,11 @@ class String
      *
      * @return string
      */
-    public static function clear($string, $charList = '\s\xA0')
+    public static function clear( $string, $charList = '\s\xA0' )
     {
-        $string = str_replace("&nbsp;", " ", $string);
-        return trim(preg_replace('@[' . $charList . ']+@u', ' ', $string));
+        $string = str_replace( "&nbsp;", " ", $string );
+
+        return trim( preg_replace( '@[' . $charList . ']+@u', ' ', $string ) );
     }
 
     /**
@@ -116,9 +118,9 @@ class String
      *
      * @return string
      */
-    public static function trim($string, $charlist = '\s\xA0')
+    public static function trim( $string, $charlist = '\s\xA0' )
     {
-        return trim(preg_replace('@^[' . $charlist . ']+(.*)[' . $charlist . ']+$@u', '\\1', $string));
+        return trim( preg_replace( '@^[' . $charlist . ']+(.*)[' . $charlist . ']+$@u', '\\1', $string ) );
     }
 
     /**
@@ -126,20 +128,21 @@ class String
      *
      * @return string
      */
-    public static function createSlug($string)
+    public static function createSlug( $string )
     {
         if ($string == '') {
             return $string;
         }
-        $string = html_entity_decode($string);
-        $string = self::clear(str_replace(array( "/", "'" ), array( " ", "" ), $string));
-        $string = self::TRtoEN($string);
-        if (empty($string)) {
+        $string = html_entity_decode( $string );
+        $string = self::clear( str_replace( array( "/", "'" ), array( " ", "" ), $string ) );
+        $string = self::TRtoEN( $string );
+        if (empty( $string )) {
             return "";
         }
-        $string = iconv("UTF-8", "ASCII//TRANSLIT", $string);
-        $string = preg_replace('@[^a-z0-9]@u', " ", strtolower($string));
-        $string = preg_replace('@[\s]{1,}@', "-", self::clear($string));
+        $string = iconv( "UTF-8", "ASCII//TRANSLIT", $string );
+        $string = preg_replace( '@[^a-z0-9]@u', " ", strtolower( $string ) );
+        $string = preg_replace( '@[\s]{1,}@', "-", self::clear( $string ) );
+
         return $string;
     }
 
@@ -150,13 +153,14 @@ class String
      *
      * @return string
      */
-    public static function generateRandom($length = 10)
+    public static function generateRandom( $length = 10 )
     {
-        $max    = ceil($length / 40);
+        $max = ceil( $length / 40 );
         $random = '';
         for ($i = 0; $i < $max; $i++) {
-            $random .= sha1(microtime(true) . mt_rand(10000, 90000));
+            $random .= sha1( microtime( true ) . mt_rand( 10000, 90000 ) );
         }
-        return substr($random, 0, $length);
+
+        return substr( $random, 0, $length );
     }
 }
