@@ -6,19 +6,23 @@ namespace Teknomavi\Common\Wrapper;
  **/
 interface CurlInterface
 {
-    public function close();
+    public function __construct($url = null);
 
-    public function copyHandle();
+    public function setOptArray($options);
 
-    public function errno();
-
-    public function error();
+    public function setOption($option, $value);
 
     public function exec();
 
     public function getInfo($opt = 0);
 
-    public function init($url = null);
+    public function errno();
+
+    public function error();
+
+    public function close();
+
+    public function copyHandle();
 
     public function multiAddHandle($mh);
 
@@ -35,10 +39,6 @@ interface CurlInterface
     public function multiRemoveHandle($mh);
 
     public function multiSelect($mh, $timeout = 1.0);
-
-    public function setOptArray($options);
-
-    public function setOption($option, $value);
 
     public function version($age = CURLVERSION_NOW);
 }

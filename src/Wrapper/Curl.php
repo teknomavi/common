@@ -9,9 +9,9 @@ class Curl implements CurlInterface
 {
     private $handle;
 
-    public function init($url = null)
+    public function __construct($url = null)
     {
-        return curl_init($url);
+        $this->handle = curl_init($url);
     }
 
     public function setOptArray($options)
