@@ -29,4 +29,9 @@ class CurlRequest implements HttpRequestInterface
     {
         curl_close($this->handle);
     }
+
+    public function error()
+    {
+        curl_error($this->handle);
+    }
 }
