@@ -7,92 +7,92 @@ namespace Teknomavi\Common\Wrapper;
  **/
 class Curl implements CurlInterface
 {
-    public function curl_close($ch)
+    public function close($ch)
     {
         curl_close($ch);
     }
 
-    public function curl_copy_handle($ch)
+    public function copyHandle($ch)
     {
         return curl_copy_handle($ch);
     }
 
-    public function curl_errno($ch)
+    public function errno($ch)
     {
         return curl_errno($ch);
     }
 
-    public function curl_error($ch)
+    public function error($ch)
     {
         return curl_error($ch);
     }
 
-    public function curl_exec($ch)
+    public function exec($ch)
     {
         return curl_exec($ch);
     }
 
-    public function curl_getinfo($ch, $opt = 0)
+    public function getInfo($ch, $opt = 0)
     {
         return curl_getinfo($ch, $opt);
     }
 
-    public function curl_init($url = null)
+    public function init($url = null)
     {
         return curl_init($url);
     }
 
-    public function curl_multi_add_handle($mh, $ch)
+    public function multiAddHandle($mh, $ch)
     {
         return curl_multi_add_handle($mh, $ch);
     }
 
-    public function curl_multi_close($mh)
+    public function multiClose($mh)
     {
         curl_multi_close($mh);
     }
 
-    public function curl_multi_exec($mh, &$still_running)
+    public function multiExec($mh, &$still_running)
     {
         return curl_multi_exec($mh, $still_running);
     }
 
-    public function curl_multi_getcontent($ch)
+    public function multiGetContent($ch)
     {
         return curl_multi_getcontent($ch);
     }
 
-    public function curl_multi_info_read($mh, &$msgs_in_queue = null)
+    public function multiInfoRead($mh, &$msgs_in_queue = null)
     {
         return curl_multi_info_read($mh, $msgs_in_queue);
     }
 
-    public function curl_multi_init()
+    public function multiInit()
     {
         return curl_multi_init();
     }
 
-    public function curl_multi_remove_handle($mh, $ch)
+    public function multiRemoveHandle($mh, $ch)
     {
         return curl_multi_remove_handle($mh, $ch);
     }
 
-    public function curl_multi_select($mh, $timeout = 1.0)
+    public function multiSelect($mh, $timeout = 1.0)
     {
         return curl_multi_select($mh, $timeout);
     }
 
-    public function curl_setopt_array($ch, $options)
+    public function setOptArray($ch, $options)
     {
         return curl_setopt_array($ch, $options);
     }
 
-    public function curl_setopt($ch, $option, $value)
+    public function setOption($ch, $option, $value)
     {
         return curl_setopt($ch, $option, $value);
     }
 
-    public function curl_version($age = CURLVERSION_NOW)
+    public function version($age = CURLVERSION_NOW)
     {
         return curl_version($age);
     }
