@@ -1,9 +1,14 @@
 <?php
 namespace Teknomavi\Common;
 
+/**
+ * Class XMLSerializer
+ * adopted from http://www.sean-barton.co.uk/2009/03/turning-an-array-or-object-into-xml-using-php/
+ *
+ * @package Teknomavi\Common
+ */
 class XMLSerializer
 {
-    // functions adopted from http://www.sean-barton.co.uk/2009/03/turning-an-array-or-object-into-xml-using-php/
     public static function generateValidXmlFromObj(\stdClass $obj, $node_block = 'nodes', $node_name = 'node')
     {
         $arr = get_object_vars($obj);

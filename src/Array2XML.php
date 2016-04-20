@@ -30,9 +30,14 @@
  */
 namespace Teknomavi\Common;
 
-use \DOMDocument;
-use \Exception;
+use DOMDocument;
+use Exception;
 
+/**
+ * Class Array2XML
+ *
+ * @package Teknomavi\Common
+ */
 class Array2XML
 {
     /**
@@ -46,9 +51,10 @@ class Array2XML
 
     /**
      * Initialize the root XML node [optional]
+     *
      * @param string $version
      * @param string $encoding
-     * @param bool $format_output
+     * @param bool   $format_output
      */
     public function init($version = '1.0', $encoding = 'UTF-8', $format_output = true)
     {
@@ -59,8 +65,10 @@ class Array2XML
 
     /**
      * Convert an Array to XML
+     *
      * @param string $node_name - name of the root node to be converted
-     * @param array $data - aray to be converterd
+     * @param array  $data      - aray to be converterd
+     *
      * @return DomDocument
      */
     public function &createXML($node_name, $data = array())
@@ -73,8 +81,10 @@ class Array2XML
 
     /**
      * Convert an Array to XML
+     *
      * @param string $node_name - name of the root node to be converted
-     * @param array $arr - aray to be converterd
+     * @param array  $arr       - aray to be converterd
+     *
      * @throws \Exception
      * @return \DOMNode
      */
@@ -137,6 +147,7 @@ class Array2XML
 
     /**
      * Get the root XML node, if there isn't one, create it.
+     *
      * @return DomDocument
      */
     private function getXMLRoot()
@@ -149,7 +160,9 @@ class Array2XML
 
     /**
      * Get string representation of boolean value
+     *
      * @param $v
+     *
      * @return string
      */
     private function boolString($v)
@@ -166,7 +179,9 @@ class Array2XML
     /**
      * Check if the tag name or attribute name contains illegal characters
      * Ref: http://www.w3.org/TR/xml/#sec-common-syn
+     *
      * @param $tag
+     *
      * @return bool
      */
     private function isValidTagName($tag)

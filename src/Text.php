@@ -1,6 +1,11 @@
 <?php
 namespace Teknomavi\Common;
 
+/**
+ * Class Text
+ *
+ * @package Teknomavi\Common
+ */
 class Text
 {
     public static $lowerTR = array("ç", "ğ", "i", "ı", "ö", "ş", "ü");
@@ -10,7 +15,9 @@ class Text
 
     /**
      * Metni büyük harfe çevirir.
+     *
      * @param  string $string
+     *
      * @return string
      */
     public static function strToUpper($string)
@@ -21,7 +28,9 @@ class Text
 
     /**
      * Metni küçük harfe çevirir
+     *
      * @param string $string
+     *
      * @return string
      */
     public static function strToLower($string)
@@ -32,7 +41,9 @@ class Text
 
     /**
      * Metnin ilk harfini büyük yapar
+     *
      * @param string $string
+     *
      * @return string
      */
     public static function ucFirst($string)
@@ -42,7 +53,9 @@ class Text
 
     /**
      * Tüm kelimelerin ilk harflerini büyük yapar
+     *
      * @param string $string
+     *
      * @return string
      */
     public static function ucWords($string)
@@ -54,7 +67,9 @@ class Text
 
     /**
      * Türkçe için uyarlanmış versiyonudur.
+     *
      * @param string $string
+     *
      * @return string
      */
     public static function uctitle($string)
@@ -66,7 +81,9 @@ class Text
 
     /**
      * Türkçe karakterleri İngilizce karşılıkları ile değiştirir.
+     *
      * @param  string $string
+     *
      * @return string
      */
     public static function TR2EN($string)
@@ -78,8 +95,10 @@ class Text
 
     /**
      * Metnin başındaki ve sonundaki boşlukları temizler. Aradaki boşlukların fazlalıklarını alır.
+     *
      * @param string $string
      * @param string $charList
+     *
      * @return string
      */
     public static function clear($string, $charList = '\s\xA0')
@@ -90,8 +109,10 @@ class Text
 
     /**
      * Metnin başındaki ve sonundaki boşlukları temizler.
+     *
      * @param string $string
      * @param string $charlist
+     *
      * @return string
      */
     public static function trim($string, $charlist = '\s\xA0')
@@ -101,6 +122,7 @@ class Text
 
     /**
      * @param string $string
+     *
      * @return string
      */
     public static function createSlug($string)
@@ -122,7 +144,9 @@ class Text
 
     /**
      * Generates random string
+     *
      * @param int $length
+     *
      * @return string
      */
     public static function generateRandom($length = 10)
