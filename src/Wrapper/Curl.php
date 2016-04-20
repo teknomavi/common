@@ -3,7 +3,8 @@ namespace Teknomavi\Common\Wrapper;
 
 /**
  * Implements the cURL interface by simply delegating calls to the built-in cURL functions..
- * See http://www.php.net/manual/en/book.curl.php
+ *
+ * @see http://www.php.net/manual/en/book.curl.php
  **/
 class Curl implements CurlInterface
 {
