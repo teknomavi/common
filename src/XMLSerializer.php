@@ -3,15 +3,14 @@ namespace Teknomavi\Common;
 
 /**
  * Class XMLSerializer
- * adopted from http://www.sean-barton.co.uk/2009/03/turning-an-array-or-object-into-xml-using-php/
- *
- * @package Teknomavi\Common
+ * adopted from http://www.sean-barton.co.uk/2009/03/turning-an-array-or-object-into-xml-using-php/.
  */
 class XMLSerializer
 {
     public static function generateValidXmlFromObj(\stdClass $obj, $node_block = 'nodes', $node_name = 'node')
     {
         $arr = get_object_vars($obj);
+
         return self::generateValidXmlFromArray($arr, $node_block, $node_name);
     }
 
@@ -21,6 +20,7 @@ class XMLSerializer
         $xml .= '<' . $node_block . '>';
         $xml .= self::generateXmlFromArray($array, $node_name);
         $xml .= '</' . $node_block . '>';
+
         return $xml;
     }
 
@@ -37,6 +37,7 @@ class XMLSerializer
         } else {
             $xml = htmlspecialchars($array, ENT_QUOTES);
         }
+
         return $xml;
     }
 }

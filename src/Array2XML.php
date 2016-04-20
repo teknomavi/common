@@ -26,7 +26,7 @@
  *          - Removed htmlspecialchars() before adding to text node or attributes.
  * Usage:
  *       $xml = Array2XML::createXML('root_node_name', $php_array);
- *       echo $xml->saveXML();
+ *       echo $xml->saveXML();.
  */
 namespace Teknomavi\Common;
 
@@ -34,9 +34,7 @@ use DOMDocument;
 use Exception;
 
 /**
- * Class Array2XML
- *
- * @package Teknomavi\Common
+ * Class Array2XML.
  */
 class Array2XML
 {
@@ -50,7 +48,7 @@ class Array2XML
     private $encoding = 'UTF-8';
 
     /**
-     * Initialize the root XML node [optional]
+     * Initialize the root XML node [optional].
      *
      * @param string $version
      * @param string $encoding
@@ -64,7 +62,7 @@ class Array2XML
     }
 
     /**
-     * Convert an Array to XML
+     * Convert an Array to XML.
      *
      * @param string $node_name - name of the root node to be converted
      * @param array  $data      - aray to be converterd
@@ -80,12 +78,13 @@ class Array2XML
     }
 
     /**
-     * Convert an Array to XML
+     * Convert an Array to XML.
      *
      * @param string $node_name - name of the root node to be converted
      * @param array  $arr       - aray to be converterd
      *
      * @throws \Exception
+     *
      * @return \DOMNode
      */
     private function &convert($node_name, $arr = [])
@@ -141,7 +140,7 @@ class Array2XML
         }
         // after we are done with all the keys in the array (if it is one)
         // we check if it has any text value, if yes, append it.
-        if (!is_array($arr) && $arr !== "") {
+        if (!is_array($arr) && $arr !== '') {
             $node->appendChild($xml->createTextNode($this->boolString($arr)));
         }
 
@@ -163,7 +162,7 @@ class Array2XML
     }
 
     /**
-     * Get string representation of boolean value
+     * Get string representation of boolean value.
      *
      * @param $v
      *
@@ -172,10 +171,10 @@ class Array2XML
     private function boolString($v)
     {
         if ($v === true) {
-            return "true";
+            return 'true';
         }
         if ($v === false) {
-            return "false";
+            return 'false';
         }
 
         return $v;
@@ -183,7 +182,7 @@ class Array2XML
 
     /**
      * Check if the tag name or attribute name contains illegal characters
-     * Ref: http://www.w3.org/TR/xml/#sec-common-syn
+     * Ref: http://www.w3.org/TR/xml/#sec-common-syn.
      *
      * @param $tag
      *
