@@ -25,7 +25,7 @@
         "issues": "https://github.com/teknomavi/common/issues"
     },
     "require": {
-        "php": "> 5.0.0"
+        "php": "> 5.4"
     },
     "autoload": {
         "psr-4": {"Teknomavi\\Common\\": "src/"}
