@@ -31,7 +31,7 @@
  */
 namespace Teknomavi\Common;
 
-use \DomDocument;
+use \DOMDocument;
 use \Exception;
 
 class Array2XML
@@ -55,7 +55,7 @@ class Array2XML
      */
     public function init( $version = '1.0', $encoding = 'UTF-8', $format_output = true )
     {
-        $this->xml = new DomDocument( $version, $encoding );
+        $this->xml = new DOMDocument( $version, $encoding );
         $this->xml->formatOutput = $format_output;
         $this->encoding = $encoding;
     }

@@ -2,7 +2,7 @@
 
 namespace Teknomavi\Common;
 
-class String
+class Text
 {
 
     public static $lowerTR = array( "ç", "ğ", "i", "ı", "ö", "ş", "ü" );
