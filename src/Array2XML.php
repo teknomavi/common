@@ -71,7 +71,7 @@ class Array2XML
      *
      * @return DomDocument
      */
-    public function &createXML($node_name, $data = array())
+    public function &createXML($node_name, $data = [])
     {
         $xml = $this->getXMLRoot();
         $xml->appendChild($this->convert($node_name, $data));
@@ -88,7 +88,7 @@ class Array2XML
      * @throws \Exception
      * @return \DOMNode
      */
-    private function &convert($node_name, $arr = array())
+    private function &convert($node_name, $arr = [])
     {
         $xml = $this->getXMLRoot();
         $node = $xml->createElement($node_name);
@@ -107,11 +107,13 @@ class Array2XML
             if (isset($arr['@value'])) {
                 $node->appendChild($xml->createTextNode($this->boolString($arr['@value'])));
                 unset($arr['@value']);
+
                 return $node;
             } else {
                 if (isset($arr['@cdata'])) {
                     $node->appendChild($xml->createCDATASection($this->boolString($arr['@cdata'])));
                     unset($arr['@cdata']);
+
                     return $node;
                 }
             }
@@ -142,6 +144,7 @@ class Array2XML
         if (!is_array($arr) && $arr !== "") {
             $node->appendChild($xml->createTextNode($this->boolString($arr)));
         }
+
         return $node;
     }
 
@@ -155,6 +158,7 @@ class Array2XML
         if (empty($this->xml)) {
             $this->init();
         }
+
         return $this->xml;
     }
 
@@ -173,6 +177,7 @@ class Array2XML
         if ($v === false) {
             return "false";
         }
+
         return $v;
     }
 
@@ -187,6 +192,7 @@ class Array2XML
     private function isValidTagName($tag)
     {
         $pattern = '/^[a-z_]+[a-z0-9\:\-\.\_]*[^:]*$/i';
+
         return preg_match($pattern, $tag, $matches) && $matches[0] == $tag;
     }
 }
