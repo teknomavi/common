@@ -1,36 +1,43 @@
 {
-    "name": "teknomavi/common",
-    "type": "library",
-    "description": "Genel Yardımcı PHP Kütüphaneleri",
-    "minimum-stability": "dev",
-    "license": "MIT",
-    "keywords": [
-        "tr2en",
-        "trtoen",
-        "string",
-        "turkce",
-        "turkish",
-        "array2xml",
-        "arraytoxml"
-    ],
-    "homepage": "https://github.com/teknomavi/common",
-    "authors": [
-        {
-            "name": "Teknomavi",
-            "email": "info@teknomavi.com",
-            "homepage": "http://www.teknomavi.com"
-        }
-    ],
-    "support": {
-        "issues": "https://github.com/teknomavi/common/issues"
-    },
-    "require": {
-        "php": "> 5.4"
-    },
-    "autoload": {
-        "psr-4": {"Teknomavi\\Common\\": "src/"}
-    },
-    "autoload-dev": {
-        "psr-4": {"Teknomavi\\Common\\": "tests/"}
+  "name": "teknomavi/common",
+  "type": "library",
+  "description": "Genel Yardımcı PHP Kütüphaneleri",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "keywords": [
+    "tr2en",
+    "trtoen",
+    "string",
+    "turkce",
+    "turkish",
+    "array2xml",
+    "arraytoxml"
+  ],
+  "homepage": "https://github.com/teknomavi/common",
+  "authors": [
+    {
+      "name": "Teknomavi",
+      "email": "info@teknomavi.com",
+      "homepage": "http://www.teknomavi.com"
     }
+  ],
+  "support": {
+    "issues": "https://github.com/teknomavi/common/issues"
+  },
+  "require": {
+    "php": "> 5.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.8.x-dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "Teknomavi\\Common\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Teknomavi\\Common\\": "tests/"
+    }
+  }
 }

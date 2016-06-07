@@ -22,7 +22,7 @@ class Text
     {
         $string = str_replace(self::$lowerTR, self::$upperTR, $string);
 
-        return mb_strtoupper($string, 'UTF-8.tr');
+        return mb_strtoupper($string, 'UTF-8');
     }
 
     /**
@@ -36,7 +36,7 @@ class Text
     {
         $string = str_replace(self::$upperTR, self::$lowerTR, $string);
 
-        return mb_strtolower($string, 'UTF-8.tr');
+        return mb_strtolower($string, 'UTF-8');
     }
 
     /**
@@ -73,22 +73,37 @@ class Text
      *
      * @return string
      */
-    public static function uctitle($string)
+    public static function ucTitle($string)
     {
-        $words = explode(' ', self::strToLower($string));
-        $words = array_map('self::ucFirst', $words);
+        $sentences = explode('.', self::strToLower($string));
+        $string = '';
+        foreach ($sentences as $sentence) {
+            $sentence = self::trim($sentence);
+            if (!empty($string)) {
+                $string .= ".";
+            }
+            if (!is_numeric(mb_substr($sentence, 0, 1))) {
+                $sentence = self::ucFirst($sentence);
+                if (!empty($string)) {
+                    $string .= ' ';
+                }
+            }
+            $string .= $sentence;
+        }
 
-        return implode(' ', $words);
+        return $string;
     }
 
     /**
      * Türkçe karakterleri İngilizce karşılıkları ile değiştirir.
      *
+     * @since 2.1
+     *
      * @param string $string
      *
      * @return string
      */
-    public static function TR2EN($string)
+    public static function turkishToEnglish($string)
     {
         $string = str_replace(self::$lowerTR, self::$lowerEN, $string);
         $string = str_replace(self::$upperTR, self::$upperEN, $string);
@@ -121,6 +136,8 @@ class Text
      */
     public static function trim($string, $charlist = '\s\xA0')
     {
+        $string = str_replace('&nbsp;', ' ', $string);
+
         return trim(preg_replace('@^[' . $charlist . ']+(.*)[' . $charlist . ']+$@u', '\\1', $string));
     }
 
@@ -136,7 +153,7 @@ class Text
         }
         $string = html_entity_decode($string);
         $string = self::clear(str_replace(['/', "'"], [' ', ''], $string));
-        $string = self::TR2EN($string);
+        $string = self::turkishToEnglish($string);
         if (empty($string)) {
             return '';
         }
