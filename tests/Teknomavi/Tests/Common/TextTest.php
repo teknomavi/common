@@ -14,7 +14,7 @@ class TextTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Text::strToLower
+     * @covers \Teknomavi\Common\Text::strToLower
      */
     public function testStrToLower()
     {
