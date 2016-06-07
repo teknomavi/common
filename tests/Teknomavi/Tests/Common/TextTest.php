@@ -1,12 +1,6 @@
 <?php
-namespace Teknomavi\Common;
+namespace Teknomavi\Tests\Common;
 
-/**
- * Created by PhpStorm.
- * User: Göktuğ
- * Date: 07.06.2016
- * Time: 22:53
- */
 class TextTest extends \PHPUnit_Framework_TestCase
 {
     /**

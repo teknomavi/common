@@ -37,7 +37,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Teknomavi\\Common\\": "tests/"
+      "Teknomavi\\Tests\\": "tests/Teknomavi/Tests"
     }
   }
 }
