@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit bootstrap="vendor/autoload.php" colors="true">
     <testsuites>
-        <testsuite name="doviz">
-            <directory>tests/</directory>
+        <testsuite name="Teknomavi Common Test Suite">
+            <directory>./tests/Teknomavi/</directory>
         </testsuite>
     </testsuites>
     <filter>
