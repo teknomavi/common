@@ -42,10 +42,6 @@ class Array2XML
      * @var DomDocument
      */
     private $xml = null;
-    /**
-     * @var string
-     */
-    private $encoding = 'UTF-8';
 
     /**
      * Initialize the root XML node [optional].
@@ -58,7 +54,6 @@ class Array2XML
     {
         $this->xml = new DOMDocument($version, $encoding);
         $this->xml->formatOutput = $format_output;
-        $this->encoding = $encoding;
     }
 
     /**
