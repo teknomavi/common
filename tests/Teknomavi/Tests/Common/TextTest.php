@@ -22,8 +22,8 @@ class TextTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \Teknomavi\Common\Text::strToUpper
-     * @covers \Teknomavi\Common\Text::strToLower
+     * @uses   \Teknomavi\Common\Text::strToUpper
+     * @uses   \Teknomavi\Common\Text::strToLower
      * @covers \Teknomavi\Common\Text::ucFirst
      */
     public function testUcFirst()
@@ -34,9 +34,9 @@ class TextTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \Teknomavi\Common\Text::strToUpper
-     * @covers \Teknomavi\Common\Text::strToLower
-     * @covers \Teknomavi\Common\Text::ucFirst
+     * @uses   \Teknomavi\Common\Text::strToUpper
+     * @uses   \Teknomavi\Common\Text::strToLower
+     * @uses   \Teknomavi\Common\Text::ucFirst
      * @covers \Teknomavi\Common\Text::ucWords
      */
     public function testUcWords()
@@ -47,9 +47,9 @@ class TextTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \Teknomavi\Common\Text::strToUpper
-     * @covers \Teknomavi\Common\Text::strToLower
-     * @covers \Teknomavi\Common\Text::ucFirst
+     * @uses   \Teknomavi\Common\Text::strToUpper
+     * @uses   \Teknomavi\Common\Text::strToLower
+     * @uses   \Teknomavi\Common\Text::ucFirst
      * @covers \Teknomavi\Common\Text::ucTitle
      */
     public function testUcTitle()
@@ -75,7 +75,7 @@ class TextTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \Teknomavi\Common\Text::clear
+     * @covers \Teknomavi\Common\Text::trim
      */
     public function testTrim()
     {
