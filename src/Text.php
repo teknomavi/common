@@ -80,7 +80,7 @@ class Text
         foreach ($sentences as $sentence) {
             $sentence = self::trim($sentence);
             if (!empty($string)) {
-                $string .= ".";
+                $string .= '.';
             }
             if (!is_numeric(mb_substr($sentence, 0, 1))) {
                 $sentence = self::ucFirst($sentence);
