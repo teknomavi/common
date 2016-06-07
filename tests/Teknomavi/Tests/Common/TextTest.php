@@ -95,7 +95,7 @@ class TextTest extends \PHPUnit_Framework_TestCase
      */
     public function testGenerateRandom()
     {
-        $this->assertTrue((bool)preg_match('@^[0-9a-f]{20}$@', Text::generateRandom(20)));
-        $this->assertTrue((bool)preg_match('@^[0-9a-f]{68}$@', Text::generateRandom(68)));
+        $this->assertTrue((bool) preg_match('@^[0-9a-f]{20}$@', Text::generateRandom(20)));
+        $this->assertTrue((bool) preg_match('@^[0-9a-f]{68}$@', Text::generateRandom(68)));
     }
 }
