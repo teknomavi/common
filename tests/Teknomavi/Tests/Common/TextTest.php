@@ -6,7 +6,7 @@ use Teknomavi\Common\Text;
 class TextTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers Text::strToUpper
+     * @covers Teknomavi\Common\Text::strToUpper
      */
     public function testStrToUpper()
     {
@@ -22,9 +22,9 @@ class TextTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Text::strToUpper
-     * @covers Text::strToLower
-     * @covers Text::ucFirst
+     * @covers Teknomavi\Common\Text::strToUpper
+     * @covers Teknomavi\Common\Text::strToLower
+     * @covers Teknomavi\Common\Text::ucFirst
      */
     public function testUcFirst()
     {
@@ -34,10 +34,10 @@ class TextTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Text::strToUpper
-     * @covers Text::strToLower
-     * @covers Text::ucFirst
-     * @covers Text::ucWords
+     * @covers Teknomavi\Common\Text::strToUpper
+     * @covers Teknomavi\Common\Text::strToLower
+     * @covers Teknomavi\Common\Text::ucFirst
+     * @covers Teknomavi\Common\Text::ucWords
      */
     public function testUcWords()
     {
@@ -47,10 +47,10 @@ class TextTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Text::strToUpper
-     * @covers Text::strToLower
-     * @covers Text::ucFirst
-     * @covers Text::ucTitle
+     * @covers Teknomavi\Common\Text::strToUpper
+     * @covers Teknomavi\Common\Text::strToLower
+     * @covers Teknomavi\Common\Text::ucFirst
+     * @covers Teknomavi\Common\Text::ucTitle
      */
     public function testUcTitle()
     {
@@ -59,7 +59,7 @@ class TextTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Text::turkishToEnglish
+     * @covers Teknomavi\Common\Text::turkishToEnglish
      */
     public function testTurkishToEnglish()
     {
@@ -67,7 +67,7 @@ class TextTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Text::clear
+     * @covers Teknomavi\Common\Text::clear
      */
     public function testClear()
     {
@@ -75,7 +75,7 @@ class TextTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Text::clear
+     * @covers Teknomavi\Common\Text::clear
      */
     public function testTrim()
     {
@@ -83,7 +83,7 @@ class TextTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Text::createSlug
+     * @covers Teknomavi\Common\Text::createSlug
      */
     public function testCreateSlug()
     {
@@ -91,7 +91,7 @@ class TextTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Text::generateRandom
+     * @covers Teknomavi\Common\Text::generateRandom
      */
     public function testGenerateRandom()
     {
