@@ -1,0 +1,8 @@
+codecov:
+  token: abb52d55-111f-462a-9e1e-e25a94d0406a
+  branch: master
+
+coverage:
+  precision: 2
+  round: down
+  range: "0...100"
