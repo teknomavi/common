@@ -91,13 +91,15 @@ class Array2XML
             if (isset($arr['@attributes'])) {
                 foreach ($arr['@attributes'] as $key => $value) {
                     if (!$this->isValidTagName($key)) {
-                        throw new Exception('[Array2XML] Illegal character in attribute name. attribute: ' . $key . ' in node: ' . $node_name);
+                        throw new Exception('[Array2XML] Illegal character in attribute name.'
+                            . 'attribute: ' . $key . ' in node: ' . $node_name);
                     }
                     $node->setAttribute($key, $this->boolString($value));
                 }
                 unset($arr['@attributes']);
             }
-            // check if it has a value stored in @value, if yes store the value and return else check if its directly stored as string
+            // check if it has a value stored in @value,
+            // if yes store the value and return else check if its directly stored as string
             if (isset($arr['@value'])) {
                 $node->appendChild($xml->createTextNode($this->boolString($arr['@value'])));
                 unset($arr['@value']);
@@ -117,7 +119,8 @@ class Array2XML
             // recurse to get the node for that key
             foreach ($arr as $key => $value) {
                 if (!$this->isValidTagName($key)) {
-                    throw new Exception('[Array2XML] Illegal character in tag name. tag: ' . $key . ' in node: ' . $node_name);
+                    throw new Exception('[Array2XML] Illegal character in tag name.'
+                        . 'tag: ' . $key . ' in node: ' . $node_name);
                 }
                 if (is_array($value) && is_numeric(key($value))) {
                     // MORE THAN ONE NODE OF ITS KIND

@@ -48,7 +48,8 @@ class Text
      */
     public static function ucFirst($string)
     {
-        return self::strToUpper(mb_substr($string, 0, 1, 'UTF-8')) . self::strToLower(mb_substr($string, 1, null, 'UTF-8'));
+        return self::strToUpper(mb_substr($string, 0, 1, 'UTF-8'))
+        . self::strToLower(mb_substr($string, 1, null, 'UTF-8'));
     }
 
     /**
