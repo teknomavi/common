@@ -14,25 +14,42 @@ class XMLSerializer
         return self::generateValidXmlFromArray($arr, $node_block, $node_name);
     }
 
-    public static function generateValidXmlFromArray($array, $node_block = 'nodes', $node_name = 'node')
+    /**
+     * @param array        $array     XML'e dönüştürülecek dizi
+     * @param string       $nodeBlock En dıştaki boğum için kullanılacak isim
+     * @param string|array $nodeNames Alt boğumlar için kullanılacak isimler.
+     *
+     * @return string
+     */
+    public static function generateValidXmlFromArray($array, $nodeBlock = 'nodes', $nodeNames = [])
     {
+        if (is_string($nodeNames)) {
+            $nodeNames = ['__global' => $nodeNames];
+        }
+        if (!isset($nodeNames['__global'])) {
+            $nodeNames['__global'] = current($nodeNames);
+        }
         $xml = '<?xml version="1.0" encoding="UTF-8" ?>';
-        $xml .= '<' . $node_block . '>';
-        $xml .= self::generateXmlFromArray($array, $node_name);
-        $xml .= '</' . $node_block . '>';
+        $xml .= '<' . $nodeBlock . '>';
+        $xml .= self::generateXmlFromArray($array, $nodeNames, $nodeBlock);
+        $xml .= '</' . $nodeBlock . '>';
 
         return $xml;
     }
 
-    private static function generateXmlFromArray($array, $node_name)
+    private static function generateXmlFromArray($array, $nodeNames, $parentNodeName = '')
     {
-        $xml = '';
         if (is_array($array) || is_object($array)) {
+            $xml = '';
             foreach ($array as $key => $value) {
                 if (is_numeric($key)) {
-                    $key = $node_name;
+                    if (!empty($parentNodeName) && isset($nodeNames[$parentNodeName])) {
+                        $key = $nodeNames[$parentNodeName];
+                    } else {
+                        $key = $nodeNames['__global'];
+                    }
                 }
-                $xml .= '<' . $key . '>' . self::generateXmlFromArray($value, $node_name) . '</' . $key . '>';
+                $xml .= '<' . $key . '>' . self::generateXmlFromArray($value, $nodeNames, $key) . '</' . $key . '>';
             }
         } else {
             $xml = htmlspecialchars($array, ENT_QUOTES);
