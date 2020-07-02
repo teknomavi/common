@@ -69,6 +69,7 @@ class Array2XML
         $xml = $this->getXMLRoot();
         $xml->appendChild($this->convert($node_name, $data));
         $this->xml = null;    // clear the xml node in the class for 2nd time use.
+
         return $xml;
     }
 
